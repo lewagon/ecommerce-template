@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col">
+    <h2 class="product__title">{{ product.name }}</h2>
+    <p class="product__description">{{ product.content }}</p>
+    {% include product-definition.html %}
+  </div>
+  <div class="col-3">
+    <img src="{{ product.image }}" alt="{{ product.name }} product image" class="product__image">
+  </div>
+</div>
