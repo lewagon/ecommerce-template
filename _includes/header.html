@@ -1,23 +1,55 @@
-<div class="container">
-  <nav class="navbar navbar-expand-lg navbar-info bg-white">
-    <a class="navbar-brand" href="#">
-      <h1 class="text-info">IdeaSpace</h1>
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#">ToyStore</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
+        </li>
       </ul>
       <span class="navbar-text">
-      <a href="#" class="snipcart-checkout" style="text-decoration: none;">
-        <div class="snipcart-summary" style="display:table; margin:right;">
-          <span style="text-decoration: none;"> 🛒 </span>
-          <span class="snipcart-total-price" style="color:black;"></span>
-        </div>
-      </a>
+        <a href="#" class="position-relative nav-link" data-bs-toggle="modal" data-bs-target="#cartModal">
+          <span>Cart</span>
+          <img src="assets/images/cart-icon.svg" alt="">
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
+        </a>
       </span>
     </div>
-  </nav>
+  </div>
+</nav>
+
+<!-- Modal -->
+<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Your Cart</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <tbody class="cart">
+
+          </tbody>
+          <tfoot>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="text-right">Total:</td>
+              <td><strong class="total"></strong></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Continue to checkout</button>
+      </div>
+    </div>
+  </div>
 </div>
