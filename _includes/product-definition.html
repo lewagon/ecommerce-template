@@ -1,10 +1,10 @@
 <span>{{ product.price }}€</span>
 <button
   class="buy-button snipcart-add-item"
-  data-item-id="{{ product.identifier }}"
-  data-item-name="{{ product.name }}"
-  data-item-price="{{ product.price }}"
-  data-item-image="{{ product.image }}"
-  data-item-description="{{ product.content | remove: '<p>' | remove: '</p>' }}">
+  data-id="{{ product.identifier }}"
+  data-name="{{ product.name }}"
+  data-price="{{ product.price }}"
+  data-image="{{ product.image }}"
+  data-description="{{ product.content | remove: '<p>' | remove: '</p>' }}">
   Add to cart
 </button>

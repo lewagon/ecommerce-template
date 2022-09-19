@@ -51,10 +51,7 @@
 
   const buttons = document.querySelectorAll('.buy-button')
   buttons.forEach((button) => {
-    button.addEventListener('click', (event) => {
-      const { itemId, itemName, itemPrice } = event.currentTarget.dataset
-      cartLS.add({ id: itemId, name: itemName, price: itemPrice })
-    })
+    button.addEventListener('click', (event) => cartLS.add({ event.currentTarget.dataset }))
   });
 </script>
 </html>
