@@ -38,7 +38,7 @@
           <button type="button" class="btn btn-block btn-sm btn-outline-primary" onclick="cartLS.quantity('${item.id}',-1)">-</button>
         </td>
         <td class="text-right">${item.price * item.quantity}€</td>
-        <td class="text-right"><button class="btn btn-primary" onclick="cartLS.remove('${item.id}')">Delete</button></td>
+        <td class="text-right"><button class="btn btn-outline-danger btn-sm" onclick="cartLS.remove('${item.id}')">Remove</button></td>
       </tr>`
     });
 
