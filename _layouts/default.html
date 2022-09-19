@@ -3,9 +3,9 @@
 {% include head.html %}
 <body>
   {% include header.html %}
-  <main class="main">
-    <div class="container">
-      <div class="products">
+  <main class="main pt-4">
+    <div class="container pt-4">
+      <div class="products pt-4">
       {{ content }}
       </div>
     </div>
@@ -17,38 +17,43 @@
 <!-- <script async src="https://cdn.snipcart.com/themes/v3.2.2/default/snipcart.js"></script>
 <div id="snipcart" data-api-key="Your snipcart API token here" hidden></div> -->
 <script>
-  const badge = document.querySelector('.badge')
-  badge.innerText = cartLS.list().reduce((prev, curr) => prev + curr.quantity, 0)
+  const renderBadge = () => {
+    const badge = document.querySelector('.badge')
+    badge.innerText = cartLS.list().reduce((prev, curr) => prev + curr.quantity, 0)
+  }
 
-  const cartBody = document.querySelector('.cart');
-  cartLS.list().forEach((item) => {
-    const itemHTML = `<tr>
-      <td>#1</td>
-      <td>${item.name}</td>
-      <td style="width: 60px;">
-        <button type="button" class="btn btn-block btn-sm btn-outline-primary" onclick="cartLS.quantity('${item.id}',1)">+</button>
-      </td>
-      <td>${item.quantity}</td>
-      <td style="width: 60px;">
-        <button type="button" class="btn btn-block btn-sm btn-outline-primary" onclick="cartLS.quantity('${item.id}',-1)">-</button>
-      </td>
-      <td class="text-right">${item.price * item.quantity}€</td>
-      <td class="text-right"><button class="btn btn-primary" onclick="cartLS.remove('${item.id}')">Delete</button></td>
-    </tr>`
+  const renderCart = () => {
+    renderBadge();
 
-    cartBody.insertAdjacentHTML('beforeend', itemHTML)
-  });
+    const cartBody = document.querySelector('.cart');
+    cartBody.innerHTML = cartLS.list().map((item, index) => {
+      return `<tr>
+        <td>#${index + 1}</td>
+        <td>${item.name}</td>
+        <td style="width: 60px;">
+          <button type="button" class="btn btn-block btn-sm btn-outline-primary" onclick="cartLS.quantity('${item.id}',1)">+</button>
+        </td>
+        <td>${item.quantity}</td>
+        <td style="width: 60px;">
+          <button type="button" class="btn btn-block btn-sm btn-outline-primary" onclick="cartLS.quantity('${item.id}',-1)">-</button>
+        </td>
+        <td class="text-right">${item.price * item.quantity}€</td>
+        <td class="text-right"><button class="btn btn-primary" onclick="cartLS.remove('${item.id}')">Delete</button></td>
+      </tr>`
+    });
 
-  const total = document.querySelectorAll('.total')
-  console.log(total)
-  total.innerText = cartLS.total();
+    const total = document.querySelector('.total')
+    total.innerText = `${cartLS.total()}€`;
+  }
+
+  renderCart();
+  cartLS.onChange(renderCart);
 
   const buttons = document.querySelectorAll('.buy-button')
   buttons.forEach((button) => {
     button.addEventListener('click', (event) => {
       const { itemId, itemName, itemPrice } = event.currentTarget.dataset
       cartLS.add({ id: itemId, name: itemName, price: itemPrice })
-      total.innerText = cartLS.list().reduce((prev, curr) => prev + curr.quantity, 0)
     })
   });
 </script>
