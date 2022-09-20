@@ -35,11 +35,11 @@ const renderCart = () => {
     return `<tr>
       <td>#${index + 1}</td>
       <td>${item.name}</td>
-      <td style="width: 60px;">
+      <td>
         <button type="button" class="btn btn-block btn-sm btn-outline-primary cart-item-buttons" data-id="${item.id}" data-delta-value="-1">-</button>
       </td>
       <td>${item.quantity}</td>
-      <td style="width: 60px;">
+      <td>
         <button type="button" class="btn btn-block btn-sm btn-outline-primary cart-item-buttons" data-id="${item.id}" data-delta-value="1">+</button>
       </td>
       <td class="text-right">${item.price * item.quantity}€</td>
