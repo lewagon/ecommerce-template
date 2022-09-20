@@ -12,13 +12,16 @@ const cartItemsListeners = () => {
     button.addEventListener('click', (event) => {
       const { id, deltaValue } = event.currentTarget.dataset
       cartLS.quantity(id, parseInt(deltaValue))
+      dataLayer.push({ event: 'updateQuantity', itemId: id, location: 'cart', delta: deltaValue, total: cartLS.total() })
     })
   })
 
   const cartItemRemoveButtons = document.querySelectorAll('.cart-item-remove')
   cartItemRemoveButtons.forEach((button) => {
     button.addEventListener('click', (event) => {
-      cartLS.remove(event.currentTarget.dataset.id)
+      const { id } = event.currentTarget.dataset
+      cartLS.remove(id)
+      dataLayer.push({ event: 'removeCartItem', itemId: id, location: 'cart', total: cartLS.total() })
     })
   })
 }
@@ -58,6 +61,7 @@ addToCartButtons.forEach((button) => {
   button.addEventListener('click', (event) => {
     const { id, name, price } = event.currentTarget.dataset
     cartLS.add({ id, name, price })
+    dataLayer.push({ event: 'addToCart', itemId: id, location: 'index', total: cartLS.total() })
   })
 });
 
