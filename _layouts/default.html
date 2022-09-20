@@ -11,50 +11,9 @@
     </div>
   </main>
 </body>
-<link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.2.2/default/snipcart.css" />
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/cart-localstorage@1.1.4/dist/cart-localstorage.min.js" type="text/javascript"></script>
 <!-- <script async src="https://cdn.snipcart.com/themes/v3.2.2/default/snipcart.js"></script>
 <div id="snipcart" data-api-key="Your snipcart API token here" hidden></div> -->
-<script>
-  const renderBadge = () => {
-    const badge = document.querySelector('.badge')
-    badge.innerText = cartLS.list().reduce((prev, curr) => prev + curr.quantity, 0)
-  }
-
-  const renderCart = () => {
-    renderBadge();
-
-    const cartBody = document.querySelector('.cart');
-    cartBody.innerHTML = cartLS.list().map((item, index) => {
-      return `<tr>
-        <td>#${index + 1}</td>
-        <td>${item.name}</td>
-        <td style="width: 60px;">
-          <button type="button" class="btn btn-block btn-sm btn-outline-primary" onclick="cartLS.quantity('${item.id}',-1)">-</button>
-        </td>
-        <td>${item.quantity}</td>
-        <td style="width: 60px;">
-          <button type="button" class="btn btn-block btn-sm btn-outline-primary" onclick="cartLS.quantity('${item.id}',1)">+</button>
-        </td>
-        <td class="text-right">${item.price * item.quantity}€</td>
-        <td class="text-right"><button class="btn btn-outline-danger btn-sm" onclick="cartLS.remove('${item.id}')">Remove</button></td>
-      </tr>`
-    }).join('');
-
-    const total = document.querySelector('.total')
-    total.innerText = `${cartLS.total()}€`;
-  }
-
-  renderCart();
-  cartLS.onChange(renderCart);
-
-  const buttons = document.querySelectorAll('.add-to-cart')
-  buttons.forEach((button) => {
-    button.addEventListener('click', (event) => {
-      const { id, name, price } = event.currentTarget.dataset
-      cartLS.add({ id, name, price })
-    })
-  });
-</script>
+<script src="/assets/javascript/index.js" type="text/javascript"></script>
 </html>
