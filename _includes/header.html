@@ -1,4 +1,4 @@
-<nav class="navbar fixed-top navbar-expand-lg bg-light">
+<nav class="navbar fixed-top navbar-expand-lg bg-white shadow-sm">
   <div class="container">
     <a class="navbar-brand" href="{{'/' | relative_url }}">ToyStore</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,14 +7,17 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{'/' | relative_url }}">Catalog</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{'/contact' | relative_url }}">Contact</a>
         </li>
       </ul>
       <span class="navbar-text">
         <a href="#" class="position-relative nav-link" data-bs-toggle="modal" data-bs-target="#cartModal">
           <span>Cart</span>
-          <img src="assets/images/cart-icon.svg" alt="">
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"></span>
+          <img src="{{ '/assets/images/cart-icon.svg' | relative_url }}" alt="">
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cart-badge"></span>
         </a>
       </span>
     </div>
@@ -48,7 +51,7 @@
         </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Continue to checkout</button>
+        <button type="button" class="btn btn-success" id="checkout-button">Continue to checkout</button>
       </div>
     </div>
   </div>

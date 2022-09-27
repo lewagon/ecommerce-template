@@ -2,7 +2,7 @@ const dataLayer = [];
 window.dataLayer = dataLayer;
 
 const renderBadge = () => {
-  const badge = document.querySelector('.badge')
+  const badge = document.querySelector('#cart-badge')
   badge.innerText = cartLS.list().reduce((prev, curr) => prev + curr.quantity, 0)
 }
 
@@ -21,7 +21,7 @@ const cartItemsListeners = () => {
     button.addEventListener('click', (event) => {
       const { id } = event.currentTarget.dataset
       cartLS.remove(id)
-      dataLayer.push({ event: 'removeCartItem', itemId: id, location: 'cart', total: cartLS.total() })
+      dataLayer.push({ event: 'removeCartItem', itemId: id, location: 'cart', cart: cartLS.list(), total: cartLS.total() })
     })
   })
 }
@@ -61,13 +61,34 @@ addToCartButtons.forEach((button) => {
   button.addEventListener('click', (event) => {
     const { id, name, price } = event.currentTarget.dataset
     cartLS.add({ id, name, price })
-    dataLayer.push({ event: 'addToCart', itemId: id, location: 'product', total: cartLS.total() })
+    dataLayer.push({ event: 'addToCart', itemId: id, location: 'product', cart: cartLS.list(), total: cartLS.total() })
   })
 });
 
 const contactForm = document.getElementById('form-contact')
-contactForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  dataLayer.push({ event: 'contactFormSubmit', location: 'contact', contact: Object.fromEntries(new FormData(event.currentTarget)) })
-  event.currentTarget.outerHTML = 'Message sent! Someone will contact you shortly'
+if (contactForm) {
+  contactForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    dataLayer.push({ event: 'contactFormSubmit', location: 'contact', contact: Object.fromEntries(new FormData(event.currentTarget)) })
+    event.currentTarget.outerHTML = 'Message sent! We will contact you shortly'
+  })
+}
+
+const checkoutButton = document.getElementById('checkout-button')
+checkoutButton.addEventListener('click', (event) => {
+  dataLayer.push({ event: 'goToCheckout', location: 'cart', cart: cartLS.list(), total: cartLS.total() })
+  cartLS.destroy()
+  const modal = bootstrap.Modal.getInstance('#cartModal')
+  modal.hide()
+})
+
+const cards = document.querySelectorAll('.card-hover')
+cards.forEach((card) => {
+  card.addEventListener('mouseenter', (event) => {
+    event.currentTarget.classList.add('shadow-sm')
+  })
+  card.addEventListener('mouseleave', (event) => {
+    event.currentTarget.classList.remove('shadow-sm')
+  })
+
 })

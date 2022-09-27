@@ -1,10 +1,12 @@
-<span>{{ page.price }}€</span>
-<button
-  class="btn btn-primary add-to-cart"
-  data-id="{{ page.identifier }}"
-  data-name="{{ page.name }}"
-  data-price="{{ page.price }}"
-  data-image="{{ page.image }}"
-  data-description="{{ page.content | remove: '<p>' | remove: '</p>' }}">
-  Add to cart
-</button>
+<h5 class="text-primary">€ {{ page.price }} EUR</h5>
+<div class="d-flex align-items-center">
+  <button
+    class="btn btn-primary add-to-cart"
+    data-id="{{ page.identifier }}"
+    data-name="{{ page.name }}"
+    data-price="{{ page.price }}"
+    data-image="{{ page.image }}"
+    data-description="{{ page.content | remove: '<p>' | remove: '</p>' }}">
+    Add to cart
+  </button>
+</div>

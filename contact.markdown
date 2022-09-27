@@ -4,12 +4,10 @@ title: About
 permalink: /contact/
 ---
 
-
 <div class="container">
   <div class="row">
-    <div class="col p-3">
-      <h3>Leave a Message</h3>
-
+    <div class="col">
+      <h2 class="py-5">Leave a Message</h2>
       <form id="form-contact" data-name="Contact Form" method="get" aria-label="Contact Form">
         <div class="mb-3">
           <label for="full_name" class="label">Full Name</label>
@@ -37,7 +35,7 @@ permalink: /contact/
     </div>
 
     <div class="col p-4">
-      <h3>Contact Info</h3>
+      <h3 class="py-5">Contact Info</h3>
 
       <p>4293  Euclid Avenue, Los Angeles, CA 90012</p>
       <p>+1 213 974-3898</p>
