@@ -1,0 +1,14 @@
+---
+layout: default
+---
+
+<div class="row">
+  <div class="col">
+    <h2>{{ page.name }}</h2>
+    <p>{{ content }}</p>
+    {% include product-definition.html %}
+  </div>
+  <div class="col-3">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.name }} product image" class="w-100">
+  </div>
+</div>

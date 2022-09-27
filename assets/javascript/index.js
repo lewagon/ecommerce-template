@@ -61,7 +61,13 @@ addToCartButtons.forEach((button) => {
   button.addEventListener('click', (event) => {
     const { id, name, price } = event.currentTarget.dataset
     cartLS.add({ id, name, price })
-    dataLayer.push({ event: 'addToCart', itemId: id, location: 'index', total: cartLS.total() })
+    dataLayer.push({ event: 'addToCart', itemId: id, location: 'product', total: cartLS.total() })
   })
 });
 
+const contactForm = document.getElementById('form-contact')
+contactForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  dataLayer.push({ event: 'contactFormSubmit', location: 'contact', contact: Object.fromEntries(new FormData(event.currentTarget)) })
+  event.currentTarget.outerHTML = 'Message sent! Someone will contact you shortly'
+})
