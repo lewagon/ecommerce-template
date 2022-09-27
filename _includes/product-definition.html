@@ -1,10 +1,10 @@
-<span>{{ product.price }}€</span>
+<span>{{ page.price }}€</span>
 <button
   class="btn btn-primary add-to-cart"
-  data-id="{{ product.identifier }}"
-  data-name="{{ product.name }}"
-  data-price="{{ product.price }}"
-  data-image="{{ product.image }}"
-  data-description="{{ product.content | remove: '<p>' | remove: '</p>' }}">
+  data-id="{{ page.identifier }}"
+  data-name="{{ page.name }}"
+  data-price="{{ page.price }}"
+  data-image="{{ page.image }}"
+  data-description="{{ page.content | remove: '<p>' | remove: '</p>' }}">
   Add to cart
 </button>

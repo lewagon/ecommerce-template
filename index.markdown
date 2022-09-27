@@ -1,6 +1,9 @@
 ---
 layout: default
 ---
-{% for product in site.products %}
- {% include product.html %}
-{% endfor %}
+
+<ul>
+  {% for product in site.products %}
+   <li><a href="{{ product.url | relative_url }}">{{ product.name }}</a></li>
+  {% endfor %}
+</ul>

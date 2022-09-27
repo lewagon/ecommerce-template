@@ -55,4 +55,12 @@ plugins:
 #   - vendor/ruby/
 
 collections:
-  - products
+  products:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: "products"
+    values:
+      layout: "product"
