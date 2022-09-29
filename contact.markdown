@@ -8,7 +8,7 @@ permalink: /contact/
   <div class="row">
     <div class="col">
       <h2 class="py-5">Leave a Message</h2>
-      <form id="form-contact" data-name="Contact Form" method="get" aria-label="Contact Form">
+      <form id="form-contact" action="{{ '/' | relative_url }}" method="get" aria-label="Contact Form">
         <div class="mb-3">
           <label for="full_name" class="label">Full Name</label>
           <input type="text" required="required" class="form-control" name="full_name" placeholder="Enter your name">

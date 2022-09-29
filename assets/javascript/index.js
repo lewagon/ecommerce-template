@@ -68,9 +68,7 @@ addToCartButtons.forEach((button) => {
 const contactForm = document.getElementById('form-contact')
 if (contactForm) {
   contactForm.addEventListener('submit', (event) => {
-    event.preventDefault();
     dataLayer.push({ event: 'contactFormSubmit', location: 'contact', contact: Object.fromEntries(new FormData(event.currentTarget)) })
-    event.currentTarget.outerHTML = 'Message sent! We will contact you shortly'
   })
 }
 
