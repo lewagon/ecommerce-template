@@ -12,7 +12,7 @@ const cartItemsListeners = () => {
     button.addEventListener('click', (event) => {
       const { id, deltaValue } = event.currentTarget.dataset
       cartLS.quantity(id, parseInt(deltaValue))
-      dataLayer.push({ event: 'updateQuantity', itemId: id, location: 'cart', delta: deltaValue, total: cartLS.total() })
+      dataLayer.push({ event: 'updateQuantity', itemId: id, location: 'cart', delta: deltaValue, cart: cartLS.list(), total: cartLS.total() })
     })
   })
 
