@@ -1,5 +1,4 @@
-const dataLayer = [];
-window.dataLayer = dataLayer;
+window.dataLayer = window.dataLayer || [];
 
 const renderBadge = () => {
   const badge = document.querySelector('#cart-badge')
