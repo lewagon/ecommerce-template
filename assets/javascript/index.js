@@ -35,7 +35,7 @@ const cartItemsListeners = () => {
       dataLayer.push({
         event: 'removeCartItem',
         item: { id, name, price },
-        quantity: quantity,
+        quantity: -parseInt(quantity),
         location: 'cart',
       })
     })
